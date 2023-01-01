@@ -1,14 +1,16 @@
 import { createApp, h, Fragment } from 'vue'
 import { createPinia } from 'pinia'
+import { createHead } from '@vueuse/head'
 import App from './App.vue'
 import router from './router'
 
 import './assets/main.css'
 
 let app = null
+const head = createHead()
 const setupApp = (app: any) => {
 	app.use(createPinia())
-	app.use(router)
+	app.use(router, head)
 	app.mount('#app')
 }
 
